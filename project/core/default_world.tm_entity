@@ -1,0 +1,190 @@
+__type: "tm_entity"
+__uuid: "cb5231fa-3d88-9a99-6224-e47bc8118aa5"
+components: [
+	{
+		__type: "tm_transform_component"
+		__uuid: "89372785-3ff6-bf95-8737-676375fdc5f8"
+		local_position: {
+			__uuid: "a732b28d-daae-ab1c-bca2-735b89cfdbe5"
+		}
+		local_rotation: {
+			__uuid: "fd4f2d4e-d39e-a51d-f4e1-8ae681d98942"
+		}
+		local_scale: {
+			__uuid: "ec9b0467-391d-311e-1454-ac25cf8cafad"
+		}
+	}
+]
+children: [
+	{
+		__uuid: "ae5f3989-5e44-4b02-07d5-5efdfb6ab51d"
+		__prototype_type: "tm_entity"
+		__prototype_uuid: "3ad88a64-2b81-508b-4e84-4160cc346b12"
+	}
+	{
+		__uuid: "a6c1dce7-107f-c627-b95a-39b612b68c99"
+		__prototype_type: "tm_entity"
+		__prototype_uuid: "a54f6f5c-b3ee-6ab8-4f2b-03f9bd53b0b8"
+		name: "sun-light"
+		components__instantiated: [
+			{
+				__type: "tm_transform_component"
+				__uuid: "ac52abdb-0c8d-1596-cf06-34030f360281"
+				__prototype_type: "tm_transform_component"
+				__prototype_uuid: "fba9c4d9-7104-4b02-1bc2-8e810fef21c5"
+				local_position: {
+					__uuid: "4e2223e0-e1e7-6257-fa3a-bd68895a784d"
+					__prototype_type: "tm_position"
+					__prototype_uuid: "60ef26a1-7062-969a-b984-7d39ef0a5ffe"
+					x: 0
+					z: 0
+				}
+				local_rotation: {
+					__uuid: "e7f3e3c8-a557-ca2f-0f28-64c3c98141c9"
+					__prototype_type: "tm_rotation"
+					__prototype_uuid: "4791d183-5f4d-b0d1-8b4f-e098291c9a1b"
+					x: -0.3134759366512299
+					y: -0.5299155116081238
+					z: -0.2194982171058655
+					w: 0.7567977905273438
+				}
+				local_scale: {
+					__uuid: "830790c2-229e-f1dd-bd3c-e6538888b3b8"
+					__prototype_type: "tm_scale"
+					__prototype_uuid: "2dfd6f12-22be-3c8d-87fc-82b734dba9b7"
+				}
+			}
+			{
+				__type: "tm_default_render_pipe_light_component"
+				__uuid: "aaeeedd3-0431-75e3-0c0e-8f0693240607"
+				__prototype_type: "tm_default_render_pipe_light_component"
+				__prototype_uuid: "731b66a9-720c-809b-b9d9-1b0867f94bbe"
+				type: 2
+				unit_type: 2
+				color_type: 1
+				color: {
+					__uuid: "3207530e-2700-1ef0-aed2-ba1857e56e2e"
+					__prototype_type: "tm_color_rgb"
+					__prototype_uuid: "dd891cfc-5175-6a7f-d536-e62802e8012c"
+					r: 1
+					g: 0.9595418572425842
+					b: 0.9191688895225525
+				}
+				intensity: 5.599999904632568
+				cast_shadows: true
+				area_extent: {
+					__uuid: "bf49c033-35c5-c596-915e-e26d4808f7f6"
+					__prototype_type: "tm_vec2_t"
+					__prototype_uuid: "22cdebda-966b-1bb5-62ed-4416b6c00a9a"
+				}
+			}
+		]
+	}
+	{
+		__uuid: "96ac7b58-e9cd-0537-7d2d-9162ff042592"
+		__prototype_type: "tm_entity"
+		__prototype_uuid: "9b32539f-83a5-ddb8-ec03-3a8a8deb47f6"
+		name: "sky"
+		components__instantiated: [
+			{
+				__type: "tm_transform_component"
+				__uuid: "74f86fab-4a59-bcf5-a684-440e812b1b2c"
+				__prototype_type: "tm_transform_component"
+				__prototype_uuid: "62d59741-586a-a70f-0998-ff8797950029"
+				local_position: {
+					__uuid: "22af992e-dbab-100f-348b-72fefe905134"
+					__prototype_type: "tm_position"
+					__prototype_uuid: "9a71d429-5db8-3a96-528d-41aeaa3b6358"
+					x: 0
+					z: 0
+				}
+				local_rotation: {
+					__uuid: "8817f160-9d29-a2f4-7038-041902ffca7a"
+					__prototype_type: "tm_rotation"
+					__prototype_uuid: "063c303c-b634-b915-f1e3-27654f67500c"
+				}
+				local_scale: {
+					__uuid: "b6b1b013-94c6-a1ae-ca30-5e5044a4eb97"
+					__prototype_type: "tm_scale"
+					__prototype_uuid: "7a6bf562-b2a8-e60c-3a8b-3be96d867f44"
+				}
+			}
+			{
+				__type: "tm_cubemap_capture_component"
+				__uuid: "c7428231-1222-3bbc-254b-ad6b5c44b87e"
+				__prototype_type: "tm_cubemap_capture_component"
+				__prototype_uuid: "19b1ca2a-3e7b-9bb5-b2bb-567279cc97a2"
+				output_image: {
+					__uuid: "e6539b8c-ab23-4a9f-ca46-8ef5351a8228"
+					__prototype_type: "tm_creation_graph"
+					__prototype_uuid: "3c431602-18eb-fb6b-f01e-4a734b235f8b"
+					graph: {
+						__uuid: "0878ebe5-2f47-5be4-87fc-ee215335e53e"
+						__prototype_type: "tm_graph"
+						__prototype_uuid: "debc2949-e047-cdb7-ce63-a6fdbd896c4f"
+						interface: {
+							__uuid: "1d8842f4-61fb-3cd8-933d-33d571797b50"
+							__prototype_type: "tm_graph_interface"
+							__prototype_uuid: "b524e314-3105-0a05-41a7-df72890d85f9"
+						}
+					}
+				}
+			}
+			{
+				__type: "tm_atmospheric_sky_component"
+				__uuid: "3a8270a7-0ecb-823c-d0b7-8d976e52ef47"
+				__prototype_type: "tm_atmospheric_sky_component"
+				__prototype_uuid: "793e03cd-36ef-b9bc-9e25-6528fa4dd7cc"
+				sun_entity: "a6c1dce7-107f-c627-b95a-39b612b68c99"
+				celestial_body_center: {
+					__uuid: "b19d0dac-33c7-cccd-88f7-71f86ca3fd90"
+					__prototype_type: "tm_vec3_t"
+					__prototype_uuid: "0555185e-2000-6a7b-6afa-fb0e0cfd659e"
+				}
+				rayleigh_scattering: {
+					__uuid: "c1c6efd4-790e-392b-c762-5739c6c17bc5"
+					__prototype_type: "tm_color_rgb"
+					__prototype_uuid: "0025fb65-96e9-dae3-310f-aa69e8e6414f"
+				}
+				mie_scattering: {
+					__uuid: "7806743c-80c5-29b8-2966-6cb07764192a"
+					__prototype_type: "tm_color_rgb"
+					__prototype_uuid: "f3ede1c8-8061-8cda-a74d-7cfb800ea45c"
+				}
+				mie_absorption: {
+					__uuid: "d68d6d48-10b6-e751-a5a4-309052d5ff3b"
+					__prototype_type: "tm_color_rgb"
+					__prototype_uuid: "f0b4cf69-b14c-2386-4c53-fb15044dd230"
+				}
+				ozone_absorption: {
+					__uuid: "fcce5fd6-f951-c32e-928a-bf57f6859fc2"
+					__prototype_type: "tm_color_rgb"
+					__prototype_uuid: "e93b9a62-6589-f642-e6a1-fc77e45eb4a4"
+				}
+				ground_albedo: {
+					__uuid: "64718b2a-594f-90e1-febb-11993b913fd6"
+					__prototype_type: "tm_vec3_t"
+					__prototype_uuid: "c66e87e5-c20d-9d07-6a85-adfcf129feb6"
+				}
+			}
+		]
+	}
+]
+child_sort_values: [
+	{
+		__uuid: "f6fee93b-d7c9-3e45-5ac5-8c6d43588374"
+	}
+	{
+		__uuid: "c606329a-13fe-465c-7081-32e57b24e66d"
+		entity: "ae5f3989-5e44-4b02-07d5-5efdfb6ab51d"
+	}
+	{
+		__uuid: "f21b78d4-3038-5c15-e189-1124de44f630"
+		value: 1
+	}
+	{
+		__uuid: "73ebe259-e80d-22cc-0980-c91074770384"
+		value: 1
+	}
+]
+__asset_uuid: "59fd0729-eab9-80cf-c553-01b1664c0308"
