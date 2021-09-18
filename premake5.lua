@@ -16,11 +16,7 @@ workspace "raymarching"
     warnings "Extra"
     inlining "Auto"
     sysincludedirs { "" }
-    filter "platforms:Win64"
-        targetdir "%TM_SDK_DIR%/bin/plugins"
-    filter {"platforms:Linux"}
-        targetdir "${TM_SDK_DIR}/bin/plugins"
-    filter {}
+    targetdir "bin/%{cfg.buildcfg}"
 
 filter "system:windows"
     platforms { "Win64" }
@@ -47,7 +43,7 @@ filter { "system:windows", "options:clang" }
 
 filter "platforms:Win64"
     defines { "TM_OS_WINDOWS", "_CRT_SECURE_NO_WARNINGS" }
-    includedirs { "%TM_SDK_DIR%/headers" }
+    includedirs { "%TM_SDK_DIR%/headers", "%TM_SDK_DIR%/" }
     staticruntime "On"
     architecture "x64"
     prebuildcommands {
@@ -70,7 +66,7 @@ filter "platforms:Win64"
 
 filter {"platforms:Linux"}
     defines { "TM_OS_LINUX", "TM_OS_POSIX" }
-    includedirs { "${TM_SDK_DIR}/headers" }
+    includedirs { "${TM_SDK_DIR}/headers", "${TM_SDK_DIR}/" }
     architecture "x64"
     toolset "clang"
     buildoptions {
@@ -104,7 +100,7 @@ project "raymarching"
     kind "SharedLib"
     language "C++"
     sysincludedirs { "" }
-    files {"**.inl", "**.h", "**.c", "**.shader"}
+    files {"**.inl", "**.h", "**.c", "**.tmsl"}
 
     filter 'files:**.shader'
         buildmessage 'Copying %{file.relpath} to %{cfg.targetdir}/../data/shaders/raymarching/'

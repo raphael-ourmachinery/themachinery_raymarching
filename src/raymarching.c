@@ -54,8 +54,9 @@ static struct tm_render_graph_setup_api *tm_render_graph_setup_api;
 
 #define TM_TT_TYPE__RAYMARCHING_COMPONENT "tm_raymarching_component"
 #define TM_TT_TYPE_HASH__RAYMARCHING_COMPONENT TM_STATIC_HASH("tm_raymarching_component", 0xb481301a8c855635ULL)
+
 enum {
-    TM_TT_PROP__RAYMARCHING_COMPONENT__COLOR,
+    TM_TT_PROP__RAYMARCHING_COMPONENT__COLOR, // SUBOBJECT(TM_TT_TYPE__COLOR_RGB)
 };
 
 typedef struct tm_raymarching_component_t {
@@ -163,12 +164,9 @@ static void component__destroy(tm_component_manager_o *manager)
 
 static void component__create(struct tm_entity_context_o* ctx)
 {
-    uint32_t num_backends;
-    tm_renderer_backend_i **backends = (tm_renderer_backend_i **)tm_global_api_registry->implementations(TM_RENDER_BACKEND_INTERFACE_NAME, &num_backends);
-    if (num_backends == 0)
+    tm_renderer_backend_i *backend = tm_first_implementation(tm_global_api_registry, tm_renderer_backend_i);
+    if (!backend)
         return;
-
-    tm_renderer_backend_i *backend = *backends;
 
 
     tm_allocator_i a;
@@ -251,17 +249,17 @@ static tm_ci_editor_ui_i* editor_aspect = &(tm_ci_editor_ui_i){
 TM_DLL_EXPORT void tm_load_plugin(struct tm_api_registry_api* reg, bool load)
 {
     tm_global_api_registry = reg;
-    tm_allocator_api = reg->get(TM_ALLOCATOR_API_NAME);
-    tm_entity_api = reg->get(TM_ENTITY_API_NAME);
-    tm_the_truth_api = reg->get(TM_THE_TRUTH_API_NAME);
-    tm_the_truth_common_types_api = reg->get(TM_THE_TRUTH_COMMON_TYPES_API_NAME);
-    tm_localizer_api = reg->get(TM_LOCALIZER_API_NAME);
-    tm_render_graph_module_api = reg->get(TM_RENDER_GRAPH_MODULE_API_NAME);
-    tm_render_graph_toolbox_api = reg->get(TM_RENDER_GRAPH_TOOLBOX_API_NAME);
-    tm_render_graph_setup_api = reg->get(TM_RENDER_GRAPH_SETUP_API_NAME);
-    tm_properties_view_api = reg->get(TM_PROPERTIES_VIEW_API_NAME);
-    tm_logger_api = reg->get(TM_LOGGER_API_NAME);
+    tm_allocator_api = tm_get_api(reg, tm_allocator_api);
+    tm_entity_api = tm_get_api(reg, tm_entity_api);
+    tm_the_truth_api = tm_get_api(reg, tm_the_truth_api);
+    tm_the_truth_common_types_api = tm_get_api(reg, tm_the_truth_common_types_api);
+    tm_localizer_api = tm_get_api(reg, tm_localizer_api);
+    tm_render_graph_module_api = tm_get_api(reg, tm_render_graph_module_api);
+    tm_render_graph_toolbox_api = tm_get_api(reg, tm_render_graph_toolbox_api);
+    tm_render_graph_setup_api = tm_get_api(reg, tm_render_graph_setup_api);
+    tm_properties_view_api = tm_get_api(reg, tm_properties_view_api);
+    tm_logger_api = tm_get_api(reg, tm_logger_api);
 
-    tm_add_or_remove_implementation(reg, load, TM_THE_TRUTH_CREATE_TYPES_INTERFACE_NAME, truth__create_types);
-    tm_add_or_remove_implementation(reg, load, TM_ENTITY_CREATE_COMPONENT_INTERFACE_NAME, component__create);
+    tm_add_or_remove_implementation(reg, load, tm_the_truth_create_types_i, truth__create_types);
+    tm_add_or_remove_implementation(reg, load, tm_entity_create_component_i, component__create);
 }
